@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using FLWebAPIPrueba.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<FLWebAPIPruebaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FLWebAPIPruebaContext") ?? throw new InvalidOperationException("Connection string 'FLWebAPIPruebaContext' not found.")));
 
 // Add services to the container.
 
