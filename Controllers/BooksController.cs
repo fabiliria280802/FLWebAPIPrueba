@@ -22,7 +22,7 @@ namespace FLWebAPIPrueba.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Book.ToListAsync());
+            return View(await _context.Book.ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -32,6 +32,7 @@ namespace FLWebAPIPrueba.Controllers
             {
                 return NotFound();
             }
+            //**/
 
             var book = await _context.Book
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -148,14 +149,14 @@ namespace FLWebAPIPrueba.Controllers
             {
                 _context.Book.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-          return _context.Book.Any(e => e.Id == id);
+            return _context.Book.Any(e => e.Id == id);
         }
     }
 }
